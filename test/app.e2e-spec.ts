@@ -17,8 +17,24 @@ describe('AppController (e2e)', () => {
 
   it('/ (GET)', () => {
     return request(app.getHttpServer())
-      .get('/')
+      .post('/graphql')
+      .send({
+        query: `
+          query findAllBlogs {
+            blogs {
+              id
+              name
+              slug
+              posts {
+                id
+                title
+                content
+                viewCount
+              }
+            }
+          }
+        `,
+      })
       .expect(200)
-      .expect('Hello World!')
   })
 })

@@ -2,12 +2,12 @@ import { ObjectType, Field, Int } from '@nestjs/graphql'
 
 @ObjectType()
 export class Blog {
-  @Field(() => Int, { description: 'Blog id' })
+  @Field(() => Int)
   id: number
 
-  @Field(() => String, { description: 'Blog name' })
+  @Field()
   name: string
 
-  @Field(() => String, { description: 'Blog slug' })
+  @Field(() => String)
   slug: string
 }

@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@nestjs/common'
-import { PrismaService } from '../prisma.service'
+import { PrismaService } from 'src/prisma.service'
 import { CreateBlogInput } from './dto/create-blog.input'
 import { UpdateBlogInput } from './dto/update-blog.input'
 import { FindAllBlogInput } from './dto/find-all-blog.input'

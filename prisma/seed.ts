@@ -4,16 +4,16 @@ const prisma = new PrismaClient()
 
 const blogData: Prisma.BlogCreateInput[] = [
   {
-    exampleField: 1,
+    name: 'blog1',
+    slug: 'blog1',
   },
   {
-    exampleField: 2,
+    name: 'blog2',
+    slug: 'blog2',
   },
   {
-    exampleField: 3,
-  },
-  {
-    exampleField: 4,
+    name: 'blog3',
+    slug: 'blog3',
   },
 ]
 

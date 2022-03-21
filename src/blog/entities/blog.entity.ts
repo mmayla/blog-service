@@ -5,6 +5,9 @@ export class Blog {
   @Field(() => Int, { description: 'Blog id' })
   id: number
 
-  @Field(() => Int, { description: 'Example field (placeholder)' })
-  exampleField: number
+  @Field(() => String, { description: 'Blog name' })
+  name: string
+
+  @Field(() => String, { description: 'Blog slug' })
+  slug: string
 }

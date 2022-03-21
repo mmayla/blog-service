@@ -6,8 +6,11 @@ type Blog {
   """Blog id"""
   id: Int!
 
-  """Example field (placeholder)"""
-  exampleField: Int!
+  """Blog name"""
+  name: String!
+
+  """Blog slug"""
+  slug: String!
 }
 
 type Query {
@@ -22,12 +25,18 @@ type Mutation {
 }
 
 input CreateBlogInput {
-  """Example field (placeholder)"""
-  exampleField: Int!
+  """Blog name"""
+  name: String!
+
+  """Blog slug"""
+  slug: String!
 }
 
 input UpdateBlogInput {
-  """Example field (placeholder)"""
-  exampleField: Int
+  """Blog name"""
+  name: String
+
+  """Blog slug"""
+  slug: String
   id: Int!
 }

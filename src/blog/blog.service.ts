@@ -2,14 +2,18 @@ import { Inject, Injectable } from '@nestjs/common'
 import { CreateBlogInput } from './dto/create-blog.input'
 import { UpdateBlogInput } from './dto/update-blog.input'
 import { PrismaService } from '../prisma.service'
-import { Blog } from './entities/blog.entity'
 
 @Injectable()
 export class BlogService {
   constructor(@Inject(PrismaService) private prismaService: PrismaService) {}
 
   create(createBlogInput: CreateBlogInput) {
-    return 'This action adds a new blog'
+    return this.prismaService.blog.create({
+      data: {
+        name: createBlogInput.name,
+        slug: createBlogInput.slug,
+      },
+    })
   }
 
   findAll() {
@@ -17,14 +21,24 @@ export class BlogService {
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} blog`
+    return this.prismaService.blog.findUnique({
+      where: { id },
+    })
   }
 
   update(id: number, updateBlogInput: UpdateBlogInput) {
-    return `This action updates a #${id} blog`
+    return this.prismaService.blog.update({
+      where: { id },
+      data: {
+        name: updateBlogInput.name,
+        slug: updateBlogInput.slug,
+      },
+    })
   }
 
   remove(id: number) {
-    return `This action removes a #${id} blog`
+    return this.prismaService.blog.delete({
+      where: { id },
+    })
   }
 }

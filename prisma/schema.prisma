@@ -11,6 +11,7 @@ datasource db {
 }
 
 model Blog {
-  id           Int @id @default(autoincrement())
-  exampleField Int
+  id   Int    @id @default(autoincrement())
+  name String
+  slug String @unique
 }

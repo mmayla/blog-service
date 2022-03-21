@@ -18,20 +18,11 @@ type Blog {
 }
 
 type Query {
-  blogs(skip: Int = 0, limit: Int = 10, filter: FindBlogInput): [Blog!]!
+  blogs(skip: Int = 0, limit: Int = 10, search: String): [Blog!]!
   blogById(id: Int!): Blog!
   blogBySlug(slug: String!): Blog!
-  posts(skip: Int = 0, limit: Int = 10, filter: FindPostInput): [Post!]!
+  posts(skip: Int = 0, limit: Int = 10, search: String): [Post!]!
   post(id: Int!): Post!
-}
-
-input FindBlogInput {
-  id: Int
-  slug: String
-}
-
-input FindPostInput {
-  id: Int
 }
 
 type Mutation {

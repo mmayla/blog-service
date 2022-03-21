@@ -41,6 +41,7 @@ type Mutation {
   createPost(createPostInput: CreatePostInput!, blogId: Int!): Post!
   updatePost(updatePostInput: UpdatePostInput!): Post!
   removePost(id: Int!): Post!
+  incrementPostViewCount(id: Int!): Post!
 }
 
 input CreateBlogInput {

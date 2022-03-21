@@ -43,4 +43,9 @@ export class PostResolver {
   removePost(@Args('id', { type: () => Int }) id: number) {
     return this.postService.remove(id)
   }
+
+  @Mutation(() => Post)
+  incrementPostViewCount(@Args('id', { type: () => Int }) id: number) {
+    return this.postService.incrementViewCount(id)
+  }
 }

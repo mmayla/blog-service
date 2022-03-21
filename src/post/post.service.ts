@@ -69,4 +69,15 @@ export class PostService {
       },
     })
   }
+
+  incrementViewCount(id: number) {
+    return this.prismaService.post.update({
+      where: { id },
+      data: {
+        viewCount: {
+          increment: 1,
+        },
+      },
+    })
+  }
 }

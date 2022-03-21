@@ -22,6 +22,6 @@ model Post {
   title     String?
   content   String
   viewCount Int     @default(0)
-  blog      Blog    @relation(fields: [blogId], references: [id])
+  blog      Blog    @relation(fields: [blogId], references: [id], onDelete: Cascade)
   blogId    Int
 }

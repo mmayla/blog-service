@@ -1,10 +1,10 @@
-import { InputType, Int, Field } from '@nestjs/graphql'
+import { InputType, Field } from '@nestjs/graphql'
 
 @InputType()
 export class CreateBlogInput {
-  @Field(() => String, { description: 'Blog name' })
+  @Field(() => String)
   name: string
 
-  @Field(() => String, { description: 'Blog slug' })
+  @Field(() => String)
   slug: string
 }

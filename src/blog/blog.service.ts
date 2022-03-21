@@ -1,7 +1,9 @@
 import { Inject, Injectable } from '@nestjs/common'
+import { PrismaService } from '../prisma.service'
 import { CreateBlogInput } from './dto/create-blog.input'
 import { UpdateBlogInput } from './dto/update-blog.input'
-import { PrismaService } from '../prisma.service'
+import { FindAllBlogInput } from './dto/find-all-blog.input'
+import { PaginationInput } from './dto/pagination.input'
 
 @Injectable()
 export class BlogService {
@@ -16,8 +18,21 @@ export class BlogService {
     })
   }
 
-  findAll() {
-    return this.prismaService.blog.findMany()
+  findAll(
+    findAllBlogInput?: FindAllBlogInput,
+    paginationInput: PaginationInput = {
+      limit: 10,
+      skip: 0,
+    },
+  ) {
+    return this.prismaService.blog.findMany({
+      where: {
+        id: findAllBlogInput?.id,
+        slug: findAllBlogInput?.slug,
+      },
+      take: paginationInput.limit,
+      skip: paginationInput.skip,
+    })
   }
 
   findOne(id: number) {

@@ -14,8 +14,18 @@ type Blog {
 }
 
 type Query {
-  blogs: [Blog!]!
+  blogs(FindAllBlogInput: FindAllBlogInput, PaginationInput: PaginationInput): [Blog!]!
   blog(id: Int!): Blog!
+}
+
+input FindAllBlogInput {
+  id: Int
+  slug: String
+}
+
+input PaginationInput {
+  skip: Int = 0
+  limit: Int = 10
 }
 
 type Mutation {
@@ -25,18 +35,12 @@ type Mutation {
 }
 
 input CreateBlogInput {
-  """Blog name"""
   name: String!
-
-  """Blog slug"""
   slug: String!
 }
 
 input UpdateBlogInput {
-  """Blog name"""
   name: String
-
-  """Blog slug"""
   slug: String
   id: Int!
 }

@@ -15,6 +15,9 @@ export class BlogService {
       data: {
         name: createBlogInput.name,
         slug: createBlogInput.slug,
+        posts: {
+          create: createBlogInput.posts,
+        },
       },
       include: {
         posts: true,

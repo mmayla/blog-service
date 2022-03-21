@@ -45,17 +45,19 @@ type Mutation {
 input CreateBlogInput {
   name: String!
   slug: String!
-}
-
-input UpdateBlogInput {
-  name: String
-  slug: String
-  id: Int!
+  posts: [CreatePostInput!]
 }
 
 input CreatePostInput {
   title: String
   content: String!
+}
+
+input UpdateBlogInput {
+  name: String
+  slug: String
+  posts: [CreatePostInput!]
+  id: Int!
 }
 
 input UpdatePostInput {

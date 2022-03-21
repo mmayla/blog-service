@@ -1,0 +1,32 @@
+version: "3"
+services:
+  app:
+    container_name: blog-service
+    build: .
+    environment:
+      NODE_ENV: production
+      PORT: 8080
+      DATABASE_URL: "postgresql://postgres:password@postgresdb:5432/blog"
+    depends_on:
+      - postgresdb
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/usr/src/app
+      - ./node_modules:/home/nodejs/node_modules
+
+  postgresdb:
+    image: postgres
+    container_name: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres:/var/lib/postgresql/data
+
+volumes:
+  postgres:
+    name: blog-db

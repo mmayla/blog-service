@@ -6,5 +6,5 @@ export class FindAllBlogInput {
   id?: number
 
   @Field(() => String, { nullable: true })
-  slug?: string
+  slug: string
 }

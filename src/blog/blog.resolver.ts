@@ -4,7 +4,7 @@ import { Blog } from './entities/blog.entity'
 import { CreateBlogInput } from './dto/create-blog.input'
 import { UpdateBlogInput } from './dto/update-blog.input'
 import { FindAllBlogInput } from './dto/find-all-blog.input'
-import { PaginationInput } from './dto/pagination.input'
+import { PaginationArgs } from './dto/pagination.args'
 
 @Resolver(() => Blog)
 export class BlogResolver {
@@ -17,12 +17,12 @@ export class BlogResolver {
 
   @Query(() => [Blog], { name: 'blogs' })
   findAll(
-    @Args('FindAllBlogInput', { nullable: true })
+    @Args()
+    paginationArgs: PaginationArgs,
+    @Args('filter', { nullable: true })
     findAllBlogInput?: FindAllBlogInput,
-    @Args('PaginationInput', { nullable: true })
-    paginationInput?: PaginationInput,
   ) {
-    return this.blogService.findAll(findAllBlogInput, paginationInput)
+    return this.blogService.findAll(paginationArgs, findAllBlogInput)
   }
 
   @Query(() => Blog, { name: 'blog' })

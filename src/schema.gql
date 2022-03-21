@@ -14,18 +14,13 @@ type Blog {
 }
 
 type Query {
-  blogs(FindAllBlogInput: FindAllBlogInput, PaginationInput: PaginationInput): [Blog!]!
+  blogs(skip: Int = 0, limit: Int = 10, filter: FindAllBlogInput): [Blog!]!
   blog(id: Int!): Blog!
 }
 
 input FindAllBlogInput {
   id: Int
   slug: String
-}
-
-input PaginationInput {
-  skip: Int = 0
-  limit: Int = 10
 }
 
 type Mutation {

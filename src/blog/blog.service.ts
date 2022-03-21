@@ -39,9 +39,18 @@ export class BlogService {
     })
   }
 
-  findOne(id: number) {
+  findOneById(id: number) {
     return this.prismaService.blog.findUnique({
       where: { id },
+      include: {
+        posts: true,
+      },
+    })
+  }
+
+  findOneBySlug(slug: string) {
+    return this.prismaService.blog.findUnique({
+      where: { slug },
       include: {
         posts: true,
       },

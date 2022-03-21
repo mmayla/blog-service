@@ -26,9 +26,14 @@ export class BlogResolver {
     return this.blogService.findAll(paginationArgs, findBlogInput)
   }
 
-  @Query(() => Blog, { name: 'blog' })
-  findOne(@Args('id', { type: () => Int }) id: number) {
-    return this.blogService.findOne(id)
+  @Query(() => Blog, { name: 'blogById' })
+  findById(@Args('id', { type: () => Int }) id: number) {
+    return this.blogService.findOneById(id)
+  }
+
+  @Query(() => Blog, { name: 'blogBySlug' })
+  findBySlug(@Args('slug', { type: () => String }) slug: string) {
+    return this.blogService.findOneBySlug(slug)
   }
 
   @Mutation(() => Blog)

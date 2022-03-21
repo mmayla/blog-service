@@ -19,7 +19,8 @@ type Blog {
 
 type Query {
   blogs(skip: Int = 0, limit: Int = 10, filter: FindBlogInput): [Blog!]!
-  blog(id: Int!): Blog!
+  blogById(id: Int!): Blog!
+  blogBySlug(slug: String!): Blog!
   posts(skip: Int = 0, limit: Int = 10, filter: FindPostInput): [Post!]!
   post(id: Int!): Post!
 }

@@ -8,7 +8,7 @@ export class Post {
   id: number
 
   @Field(() => String, { nullable: true })
-  title?: string | null
+  title?: string
 
   @Field()
   content: string

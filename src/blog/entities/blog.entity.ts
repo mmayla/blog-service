@@ -14,5 +14,5 @@ export class Blog {
   slug: string
 
   @Field(() => [Post], { nullable: true })
-  posts?: [Post] | null
+  posts?: [Post]
 }

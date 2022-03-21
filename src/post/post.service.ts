@@ -3,7 +3,7 @@ import { PrismaService } from 'src/prisma.service'
 import { PaginationArgs } from 'src/shared/pagination/pagination.args'
 import { CreatePostInput } from './dto/create-post.input'
 import { UpdatePostInput } from './dto/update-post.input'
-import { FindAllPostInput } from './dto/find-all-post.input'
+import { FindPostInput } from './dto/find-post.input'
 
 @Injectable()
 export class PostService {
@@ -26,7 +26,7 @@ export class PostService {
     })
   }
 
-  findAll(paginationArgs: PaginationArgs, findAllPostInput?: FindAllPostInput) {
+  findAll(paginationArgs: PaginationArgs, findAllPostInput?: FindPostInput) {
     return this.prismaService.post.findMany({
       where: {
         id: findAllPostInput?.id,

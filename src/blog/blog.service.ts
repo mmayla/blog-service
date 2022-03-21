@@ -4,7 +4,7 @@ import { PrismaService } from 'src/prisma.service'
 import { PaginationArgs } from 'src/shared/pagination/pagination.args'
 import { CreateBlogInput } from './dto/create-blog.input'
 import { UpdateBlogInput } from './dto/update-blog.input'
-import { FindAllBlogInput } from './dto/find-all-blog.input'
+import { FindBlogInput } from './dto/find-blog.input'
 
 @Injectable()
 export class BlogService {
@@ -22,7 +22,7 @@ export class BlogService {
     })
   }
 
-  findAll(paginationArgs: PaginationArgs, findAllBlogInput?: FindAllBlogInput) {
+  findAll(paginationArgs: PaginationArgs, findAllBlogInput?: FindBlogInput) {
     return this.prismaService.blog.findMany({
       where: {
         id: findAllBlogInput?.id,

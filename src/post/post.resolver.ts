@@ -5,7 +5,7 @@ import { PostService } from './post.service'
 import { Post } from './entities/post.entity'
 import { CreatePostInput } from './dto/create-post.input'
 import { UpdatePostInput } from './dto/update-post.input'
-import { FindAllPostInput } from './dto/find-all-post.input'
+import { FindPostInput } from './dto/find-post.input'
 
 @Resolver(() => Post)
 export class PostResolver {
@@ -24,7 +24,7 @@ export class PostResolver {
     @Args()
     paginationArgs: PaginationArgs,
     @Args('filter', { nullable: true })
-    findAllPostInput: FindAllPostInput,
+    findAllPostInput: FindPostInput,
   ) {
     return this.postService.findAll(paginationArgs, findAllPostInput)
   }

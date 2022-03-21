@@ -18,18 +18,18 @@ type Blog {
 }
 
 type Query {
-  blogs(skip: Int = 0, limit: Int = 10, filter: FindAllBlogInput): [Blog!]!
+  blogs(skip: Int = 0, limit: Int = 10, filter: FindBlogInput): [Blog!]!
   blog(id: Int!): Blog!
-  posts(skip: Int = 0, limit: Int = 10, filter: FindAllPostInput): [Post!]!
+  posts(skip: Int = 0, limit: Int = 10, filter: FindPostInput): [Post!]!
   post(id: Int!): Post!
 }
 
-input FindAllBlogInput {
+input FindBlogInput {
   id: Int
   slug: String
 }
 
-input FindAllPostInput {
+input FindPostInput {
   id: Int
 }
 

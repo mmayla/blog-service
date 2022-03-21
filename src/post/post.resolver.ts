@@ -1,6 +1,6 @@
 import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql'
 
-import { PaginationArgs } from 'src/shared/pagination/pagination.args'
+import { PaginationArgs } from '../shared/pagination/pagination.args'
 import { PostService } from './post.service'
 import { Post } from './entities/post.entity'
 import { CreatePostInput } from './dto/create-post.input'

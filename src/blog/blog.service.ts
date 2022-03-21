@@ -1,7 +1,7 @@
 import { Inject, Injectable } from '@nestjs/common'
 
-import { PrismaService } from 'src/prisma.service'
-import { PaginationArgs } from 'src/shared/pagination/pagination.args'
+import { PrismaService } from '../prisma.service'
+import { PaginationArgs } from '../shared/pagination/pagination.args'
 import { CreateBlogInput } from './dto/create-blog.input'
 import { UpdateBlogInput } from './dto/update-blog.input'
 

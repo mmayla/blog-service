@@ -1,7 +1,8 @@
 import { Test, TestingModule } from '@nestjs/testing'
+
+import { PrismaService } from '../prisma.service'
 import { BlogResolver } from './blog.resolver'
 import { BlogService } from './blog.service'
-import { PrismaService } from '../prisma.service'
 
 describe('BlogResolver', () => {
   let resolver: BlogResolver

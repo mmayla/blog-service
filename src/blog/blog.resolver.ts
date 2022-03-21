@@ -1,6 +1,6 @@
 import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql'
 
-import { PaginationArgs } from 'src/shared/pagination/pagination.args'
+import { PaginationArgs } from '../shared/pagination/pagination.args'
 import { BlogService } from './blog.service'
 import { Blog } from './entities/blog.entity'
 import { CreateBlogInput } from './dto/create-blog.input'

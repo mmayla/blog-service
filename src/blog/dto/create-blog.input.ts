@@ -1,6 +1,6 @@
 import { InputType, Field } from '@nestjs/graphql'
 
-import { CreatePostInput } from 'src/post/dto/create-post.input'
+import { CreatePostInput } from '../../post/dto/create-post.input'
 
 @InputType()
 export class CreateBlogInput {

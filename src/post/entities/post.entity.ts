@@ -1,6 +1,6 @@
 import { ObjectType, Field, Int } from '@nestjs/graphql'
 
-import { Blog } from 'src/blog/entities/blog.entity'
+import { Blog } from '../../blog/entities/blog.entity'
 
 @ObjectType()
 export class Post {

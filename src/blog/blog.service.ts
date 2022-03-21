@@ -16,6 +16,9 @@ export class BlogService {
         name: createBlogInput.name,
         slug: createBlogInput.slug,
       },
+      include: {
+        posts: true,
+      },
     })
   }
 
@@ -27,12 +30,18 @@ export class BlogService {
       },
       take: paginationArgs.limit,
       skip: paginationArgs.skip,
+      include: {
+        posts: true,
+      },
     })
   }
 
   findOne(id: number) {
     return this.prismaService.blog.findUnique({
       where: { id },
+      include: {
+        posts: true,
+      },
     })
   }
 
@@ -43,12 +52,18 @@ export class BlogService {
         name: updateBlogInput.name,
         slug: updateBlogInput.slug,
       },
+      include: {
+        posts: true,
+      },
     })
   }
 
   remove(id: number) {
     return this.prismaService.blog.delete({
       where: { id },
+      include: {
+        posts: true,
+      },
     })
   }
 }

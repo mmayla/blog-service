@@ -6,6 +6,18 @@ const blogData: Prisma.BlogCreateInput[] = [
   {
     name: 'blog1',
     slug: 'blog1',
+    posts: {
+      create: [
+        {
+          title: 'post1 for blog 1',
+          content: 'post1 for blog 1',
+        },
+        {
+          title: 'post2 for blog 1',
+          content: 'post2 for blog 1',
+        },
+      ],
+    },
   },
   {
     name: 'blog2',
@@ -14,21 +26,14 @@ const blogData: Prisma.BlogCreateInput[] = [
   {
     name: 'blog3',
     slug: 'blog3',
-  },
-]
-
-const postData: Prisma.PostCreateInput[] = [
-  {
-    title: 'post1',
-    content: 'post1 content',
-  },
-  {
-    title: 'post2',
-    content: 'post2 content',
-  },
-  {
-    title: 'post3',
-    content: 'post3 content',
+    posts: {
+      create: [
+        {
+          title: 'post1 for blog 3',
+          content: 'post1 for blog 1',
+        },
+      ],
+    },
   },
 ]
 
@@ -39,13 +44,6 @@ async function main() {
       data: b,
     })
     console.log(`create blog with id: ${blog.id}`)
-  }
-
-  for (const p of postData) {
-    const blog = await prisma.post.create({
-      data: p,
-    })
-    console.log(`create post with id: ${blog.id}`)
   }
   console.log('Seeding finished.')
 }

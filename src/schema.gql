@@ -2,17 +2,19 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type Blog {
-  id: Int!
-  name: String!
-  slug: String!
-}
-
 type Post {
   id: Int!
   title: String
   content: String!
   viewCount: Int!
+  blog: Blog!
+}
+
+type Blog {
+  id: Int!
+  name: String!
+  slug: String!
+  posts: [Post!]
 }
 
 type Query {
@@ -35,7 +37,7 @@ type Mutation {
   createBlog(createBlogInput: CreateBlogInput!): Blog!
   updateBlog(updateBlogInput: UpdateBlogInput!): Blog!
   removeBlog(id: Int!): Blog!
-  createPost(createPostInput: CreatePostInput!): Post!
+  createPost(createPostInput: CreatePostInput!, blogId: Int!): Post!
   updatePost(updatePostInput: UpdatePostInput!): Post!
   removePost(id: Int!): Post!
 }

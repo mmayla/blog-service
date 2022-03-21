@@ -12,8 +12,11 @@ export class PostResolver {
   constructor(private readonly postService: PostService) {}
 
   @Mutation(() => Post)
-  createPost(@Args('createPostInput') createPostInput: CreatePostInput) {
-    return this.postService.create(createPostInput)
+  createPost(
+    @Args('createPostInput') createPostInput: CreatePostInput,
+    @Args('blogId', { type: () => Int }) blogId: number,
+  ) {
+    return this.postService.create(createPostInput, blogId)
   }
 
   @Query(() => [Post], { name: 'posts' })

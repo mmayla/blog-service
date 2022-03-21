@@ -11,9 +11,10 @@ datasource db {
 }
 
 model Blog {
-  id   Int    @id @default(autoincrement())
-  name String
-  slug String @unique
+  id    Int    @id @default(autoincrement())
+  name  String
+  slug  String @unique
+  posts Post[]
 }
 
 model Post {
@@ -21,4 +22,6 @@ model Post {
   title     String?
   content   String
   viewCount Int     @default(0)
+  blog      Blog    @relation(fields: [blogId], references: [id])
+  blogId    Int
 }

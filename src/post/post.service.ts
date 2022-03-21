@@ -9,11 +9,19 @@ import { FindAllPostInput } from './dto/find-all-post.input'
 export class PostService {
   constructor(@Inject(PrismaService) private prismaService: PrismaService) {}
 
-  create(createPostInput: CreatePostInput) {
+  create(createPostInput: CreatePostInput, blogId: number) {
     return this.prismaService.post.create({
       data: {
         title: createPostInput.title,
         content: createPostInput.content,
+        blog: {
+          connect: {
+            id: blogId,
+          },
+        },
+      },
+      include: {
+        blog: true,
       },
     })
   }
@@ -25,12 +33,18 @@ export class PostService {
       },
       take: paginationArgs.limit,
       skip: paginationArgs.skip,
+      include: {
+        blog: true,
+      },
     })
   }
 
   findOne(id: number) {
     return this.prismaService.post.findUnique({
       where: { id },
+      include: {
+        blog: true,
+      },
     })
   }
 
@@ -41,12 +55,18 @@ export class PostService {
         title: updatePostInput.title,
         content: updatePostInput.content,
       },
+      include: {
+        blog: true,
+      },
     })
   }
 
   remove(id: number) {
     return this.prismaService.post.delete({
       where: { id },
+      include: {
+        blog: true,
+      },
     })
   }
 }

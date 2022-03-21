@@ -1,8 +1,11 @@
 import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql'
+
+import { PaginationArgs } from 'src/shared/pagination/pagination.args'
 import { PostService } from './post.service'
 import { Post } from './entities/post.entity'
 import { CreatePostInput } from './dto/create-post.input'
 import { UpdatePostInput } from './dto/update-post.input'
+import { FindAllPostInput } from './dto/find-all-post.input'
 
 @Resolver(() => Post)
 export class PostResolver {
@@ -14,8 +17,13 @@ export class PostResolver {
   }
 
   @Query(() => [Post], { name: 'posts' })
-  findAll() {
-    return this.postService.findAll()
+  findAll(
+    @Args()
+    paginationArgs: PaginationArgs,
+    @Args('filter', { nullable: true })
+    findAllPostInput: FindAllPostInput,
+  ) {
+    return this.postService.findAll(paginationArgs, findAllPostInput)
   }
 
   @Query(() => Post, { name: 'post' })

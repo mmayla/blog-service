@@ -18,13 +18,17 @@ type Post {
 type Query {
   blogs(skip: Int = 0, limit: Int = 10, filter: FindAllBlogInput): [Blog!]!
   blog(id: Int!): Blog!
-  posts: [Post!]!
+  posts(skip: Int = 0, limit: Int = 10, filter: FindAllPostInput): [Post!]!
   post(id: Int!): Post!
 }
 
 input FindAllBlogInput {
   id: Int
   slug: String
+}
+
+input FindAllPostInput {
+  id: Int
 }
 
 type Mutation {

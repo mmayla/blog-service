@@ -3,19 +3,23 @@
 # ------------------------------------------------------
 
 type Blog {
-  """Blog id"""
   id: Int!
-
-  """Blog name"""
   name: String!
-
-  """Blog slug"""
   slug: String!
+}
+
+type Post {
+  id: Int!
+  title: String
+  content: String!
+  viewCount: Int!
 }
 
 type Query {
   blogs(skip: Int = 0, limit: Int = 10, filter: FindAllBlogInput): [Blog!]!
   blog(id: Int!): Blog!
+  posts: [Post!]!
+  post(id: Int!): Post!
 }
 
 input FindAllBlogInput {
@@ -27,6 +31,9 @@ type Mutation {
   createBlog(createBlogInput: CreateBlogInput!): Blog!
   updateBlog(updateBlogInput: UpdateBlogInput!): Blog!
   removeBlog(id: Int!): Blog!
+  createPost(createPostInput: CreatePostInput!): Post!
+  updatePost(updatePostInput: UpdatePostInput!): Post!
+  removePost(id: Int!): Post!
 }
 
 input CreateBlogInput {
@@ -37,5 +44,16 @@ input CreateBlogInput {
 input UpdateBlogInput {
   name: String
   slug: String
+  id: Int!
+}
+
+input CreatePostInput {
+  title: String
+  content: String!
+}
+
+input UpdatePostInput {
+  title: String
+  content: String
   id: Int!
 }

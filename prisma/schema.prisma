@@ -15,3 +15,10 @@ model Blog {
   name String
   slug String @unique
 }
+
+model Post {
+  id        Int     @id @default(autoincrement())
+  title     String?
+  content   String
+  viewCount Int     @default(0)
+}

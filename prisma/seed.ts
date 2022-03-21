@@ -17,6 +17,21 @@ const blogData: Prisma.BlogCreateInput[] = [
   },
 ]
 
+const postData: Prisma.PostCreateInput[] = [
+  {
+    title: 'post1',
+    content: 'post1 content',
+  },
+  {
+    title: 'post2',
+    content: 'post2 content',
+  },
+  {
+    title: 'post3',
+    content: 'post3 content',
+  },
+]
+
 async function main() {
   console.log('Start seeding ...')
   for (const b of blogData) {
@@ -24,6 +39,13 @@ async function main() {
       data: b,
     })
     console.log(`create blog with id: ${blog.id}`)
+  }
+
+  for (const p of postData) {
+    const blog = await prisma.post.create({
+      data: p,
+    })
+    console.log(`create post with id: ${blog.id}`)
   }
   console.log('Seeding finished.')
 }
